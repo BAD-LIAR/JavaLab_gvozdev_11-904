@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="JavaLab_WebApp_to_07_hw@localhost" uuid="50ec66d2-b54c-4b93-aeba-3e558e56e05a">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/JavaLab_WebApp_to_07_hw</jdbc-url>
+    </data-source>
+  </component>
+</project>

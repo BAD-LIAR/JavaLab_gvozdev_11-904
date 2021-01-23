@@ -1,0 +1,15 @@
+Unsatisfied dependency expressed through constructor parameter 0;
+
+nested exception is org.springframework.beans.factory.BeanCreationException:
+Error creating bean with name 'dataSource' defined in ru.itdrive.web.config.ApplicationConfig:
+Bean instantiation via factory method failed;
+
+nested exception is org.springframework.beans.BeanInstantiationException:
+Failed to instantiate [javax.sql.DataSource]:
+Factory method 'dataSource' threw exception;
+
+nested exception is com.zaxxer.hikari.pool.HikariPool$PoolInitializationException:
+Failed to initialize pool:
+Р’РђР–РќРћ: Р±Р°Р·Р° РґР°РЅРЅС‹С… "JavaLab SCRF" РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+ (pgjdbc: autodetected server-encoding to be windows-1251,
+  if the message is not readable, please check database logs and/or host, port, dbname, user, password, pg_hba.conf)

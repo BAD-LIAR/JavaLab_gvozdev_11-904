@@ -16,4 +16,5 @@ ru\itis\javalab\servlets\RegisterServlet.class
 ru\itis\javalab\models\User$UserBuilder.class
 ru\itis\javalab\listeners\AppConfigServletContextListener.class
 ru\itis\javalab\repositories\SimpleJdbcTemplate.class
+temp.class
 ru\itis\javalab\filters\RequestHeadersFilter.class

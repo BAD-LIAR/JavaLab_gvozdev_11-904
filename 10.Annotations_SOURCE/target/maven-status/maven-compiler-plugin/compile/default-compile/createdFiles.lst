@@ -1,0 +1,8 @@
+HTMLProcessor\HtmlInput.class
+HTMLProcessor\User.class
+HTMLProcessor\Car.class
+HTMLProcessor\Form.class
+HTMLProcessor\HtmlProcessor.class
+HTMLProcessor\Form$Field.class
+META-INF\services\javax.annotation.processing.Processor
+HTMLProcessor\HtmlForm.class

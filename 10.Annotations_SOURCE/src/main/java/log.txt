@@ -1,0 +1,4 @@
+action: /users         mathod: post
+type: text         name: carname         placeholder: Car ник
+type: email         name: email         placeholder: Ваша почта
+type: password         name: password         placeholder: Пароль

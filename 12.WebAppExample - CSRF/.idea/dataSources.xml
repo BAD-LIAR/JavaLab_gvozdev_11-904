@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="JavaLab CSRF@localhost" uuid="8e18f847-edd4-4e79-9796-fdcea1fa0163">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/JavaLab CSRF</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="JavaLabSCRF@localhost" uuid="357be75c-fd87-4df7-aafc-c76cdd4c0877">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/JavaLabSCRF</jdbc-url>
+    </data-source>
+  </component>
+</project>

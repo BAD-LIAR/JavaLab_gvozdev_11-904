@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="07. Freemarker:Web">
+    <output-path>$PROJECT_DIR$/out/artifacts/07__Freemarker_Web</output-path>
+    <root id="archive" name="07. Freemarker_Web.war">
+      <element id="artifact" artifact-name="07. Freemarker:Web exploded" />
+      <element id="javaee-facet-resources" facet="07. Freemarker/web/Web2" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="07. Freemarker" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
