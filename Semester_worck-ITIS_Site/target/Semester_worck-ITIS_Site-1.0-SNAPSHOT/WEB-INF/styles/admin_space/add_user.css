@@ -1,0 +1,78 @@
+.add_user input[type=text]{
+    width:250px;
+}
+
+.add_user form{
+    padding: 0 150px;
+}
+
+
+
+.add_user input[type=checkbox]{
+    width:15px;
+    height: 15px;
+    margin-top: 15px;
+}
+
+.add_user button{
+    margin: 45px auto;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+body{
+    background-color: rgba(64, 144, 255, 0.43);
+    /*background: url("../img/backgraund.png") no-repeat top;*/
+}
+
+.add_user{
+    background-color: rgba(255, 255, 255, 0.58);
+    height: 800px;
+    width: 550px;
+    text-align: center;
+    margin: 45px auto;
+}
+
+.my_check_box{
+    display: inline;
+}
+
+.add_user h1{
+    font-size: 600%;
+}
+
+#password-input {
+    width: 250px;
+    z-index: 0;
+}
+
+.password-control {
+    z-index: 1;
+    position: absolute;
+
+    margin-top: 10px;
+
+    right: 6px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url("../../../old/img/open.webp") 0 0 no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.password-control.view {
+    background: url("../../../old/img/close.webp") 0 0 no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.password1 {
+    position: relative;
+}
+
+@media screen and (max-device-width: 600px) {
+    .add_user{
+        padding-top: 150px;
+    }
+}
+

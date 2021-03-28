@@ -1,0 +1,39 @@
+body{
+    background-color: rgba(64, 144, 255, 0.43);
+}
+
+.profile h1{
+    font-size: 600%;
+}
+
+.profile{
+    margin-top: 60px;
+}
+
+img.profile{
+    width: 500px;
+    margin-right: 100px;
+    float: left;
+    margin-top: 33px;
+}
+
+h3.profile{
+    text-align: center;
+}
+
+div.profile_info{
+    margin: 100px 60px auto;
+}
+
+table.my_table{
+    border-color: black;
+    padding: 5px;
+    border-collapse: collapse;
+    width: 300px;
+}
+
+
+TD, TH {
+    padding: 5px;
+    border: 2px solid black;
+}

@@ -1,0 +1,20 @@
+li.exit {
+    margin-left: 80%;
+}
+
+a.exit {
+    margin-left: 80%;
+}
+
+body {
+    background-color: rgba(64, 144, 255, 0.43);
+}
+
+h2{
+    margin-top: 40px;
+    text-align: center;
+}
+div.about_itis{
+    width: 1300px;
+    margin-left: 100px;
+}

@@ -1,0 +1,52 @@
+.news h1 {
+    font-size: 600%;
+    margin-left: 37%;
+}
+
+.news h3 {
+    margin-left: 37%;
+}
+
+body {
+    background-color: rgba(64, 144, 255, 0.43);
+}
+
+.field_for_news {
+    margin: 7% 0 0 0;
+    background-color: rgba(192, 196, 238, 0.43);
+    opacity: 85%;
+}
+
+.news_object {
+    background-color: rgba(255, 255, 255, 0.43);
+    width: 475px;
+    float: left;
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+p {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.news_photo {
+    width: 350px;
+    margin: 20px;
+}
+
+.comment_photo {
+    width: 30px;
+    margin: 20px;
+}
+
+.comments {
+    border: 3px cornflowerblue solid;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.navbar {
+    margin: 0 5% 0 5%;
+}
