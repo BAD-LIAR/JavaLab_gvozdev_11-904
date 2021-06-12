@@ -7,12 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SpringWebApp" />
         <module name="Semester_worck-ITIS_Site" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Semester_worck-ITIS_Site" target="12" />
+      <module name="SpringWebApp" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

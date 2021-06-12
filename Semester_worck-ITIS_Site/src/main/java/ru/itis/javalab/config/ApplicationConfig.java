@@ -5,10 +5,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import freemarker.template.TemplateExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassRelativeResourceLoader;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,6 +15,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.ui.freemarker.SpringTemplateLoader;
@@ -26,8 +25,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import ru.itis.javalab.repositories.old.UsersRepository;
-import ru.itis.javalab.repositories.old.UsersRepositoryJdbcTemplateImpl;
+import ru.itis.javalab.security.details.UserDetailsServiceImpl;
+
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -43,10 +42,11 @@ import java.util.concurrent.Executors;
  * @version v1.0
  */
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "ru.itis.javalab.repositories")
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "ru.itis.javalab")
 public class ApplicationConfig implements WebMvcConfigurer {
 
@@ -74,10 +74,6 @@ public class ApplicationConfig implements WebMvcConfigurer {
         return javaMailSender;
     }
 
-    @Bean
-    public UsersRepository usersRepository() {
-        return new UsersRepositoryJdbcTemplateImpl(dataSource());
-    }
 
     @Bean
     public ExecutorService executorService() {
@@ -165,6 +161,20 @@ public class ApplicationConfig implements WebMvcConfigurer {
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.hbm2ddl.import_files_sql_extractor", "org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor");
+        properties.setProperty("hibernate.connection.charSet","UTF-8");
+        properties.setProperty("hibernate.hbm2ddl.import_files","schema.sql");
+        properties.setProperty("connection.autocommit","true");
         return properties;
     }
+
+    @Bean
+    public UserDetailsServiceImpl userDetailsService(){
+        return new  UserDetailsServiceImpl();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    };
 }

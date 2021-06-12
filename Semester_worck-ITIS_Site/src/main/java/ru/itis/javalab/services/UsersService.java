@@ -2,8 +2,10 @@ package ru.itis.javalab.services;
 
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.dto.UserForm;
+import ru.itis.javalab.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 15.10.2020
@@ -18,4 +20,5 @@ public interface UsersService {
 
     UserDto getUser(Long userId);
     boolean containsUser(String email, String password);
+    Optional<User> findByEmail(String email);
 }

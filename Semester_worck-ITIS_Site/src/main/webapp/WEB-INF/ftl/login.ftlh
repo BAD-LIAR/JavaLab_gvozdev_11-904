@@ -1,3 +1,5 @@
+<#ftl encoding="UTF-8"/>
+<#import "spring.ftl" as spring/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +12,20 @@
     <title>Login</title>
 </head>
 <body>
-<div class="login">
+<div action="/signIn" class="login">
     <h1><span style="color: #0073ff; ">И</span>Т<span style="color: #0073ff ">И</span>С</h1>
-    <form>
+    <form method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <div class="login_field">
             <label for="login">Введите вашу почту:</label>
             <br>
-            <input required type="text" id="login" name="user_name" class="form-control">
+            <input required type="text" id="login" name="login" class="form-control">
         </div>
 
         <div class="login_field">
             <label for="password">Введите ваш пароль:</label>
             <br>
-            <input required type="password" id="password" name="user_password" class="form-control">
+            <input required type="password" id="password" name="password" class="form-control">
         </div>
 
         <div>
@@ -33,12 +36,9 @@
 
 
         <div class="login_field row">
-            <button class="form-control col-sm-6" type="submit">Войти</button>
+            <button class="form-control col-sm-6" type="submit" value="SIGN IN">Войти</button>
         </div>
-        <div class="login_field row">
-            <a href="/register" class="form-control col-sm-7">Регистрация</a>
-            <a href="/welcome" class="form-control col-sm-4" type="submit" name="guest">Гость</a>
-        </div>
+
 
 
     </form>

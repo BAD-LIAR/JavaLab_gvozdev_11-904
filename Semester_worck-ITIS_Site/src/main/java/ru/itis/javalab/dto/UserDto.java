@@ -26,7 +26,8 @@ public class UserDto {
     private String lastName;
     private String email;
     private String password;
-    private String status;
+    private User.Role role;
+    private User.State state;
 
     public static UserDto from(User user) {
         if (user == null) {
@@ -38,7 +39,7 @@ public class UserDto {
                 .lastName(user.getLastName())
                 .password(user.getPassword())
                 .email(user.getEmail())
-                .status(user.getStatus())
+                .role(User.Role.USER)
                 .build();
     }
 

@@ -24,6 +24,7 @@
     <h1><span style="color: #0073ff; ">И</span>Т<span style="color: #0073ff ">И</span>С</h1>
     <form method="post">
         <div class="login_field">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <label for="email"><@spring.message 'sign_up_page.registration.enter_email'/></label>
             <br>
             <@spring.formInput "userForm.email"/>

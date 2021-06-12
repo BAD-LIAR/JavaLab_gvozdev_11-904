@@ -8,20 +8,26 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
+import ru.itis.javalab.security.config.SecurityConfig;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import java.io.IOException;
 
 
 public class ApplicationInitializer implements WebApplicationInitializer {
-    @SneakyThrows
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext springWebContext = new AnnotationConfigWebApplicationContext();
 
-        PropertySource propertySource = new ResourcePropertySource("classpath:db.properties");
+        PropertySource propertySource = null;
+        try {
+            propertySource = new ResourcePropertySource("classpath:application.properties");
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
         springWebContext.getEnvironment().setActiveProfiles((String) propertySource.getProperty("spring.profile"));
 
         springWebContext.register(ApplicationConfig.class);
@@ -32,6 +38,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
         dispatcherServlet.setLoadOnStartup(1);
         dispatcherServlet.addMapping("/");
 
+        springWebContext.register(SecurityConfig.class);
 
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");

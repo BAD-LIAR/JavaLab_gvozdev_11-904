@@ -1,6 +1,7 @@
 package ru.itis.javalab.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.dto.UserForm;
 import ru.itis.javalab.services.UsersService;
+
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -61,23 +64,34 @@ public class UsersController {
     }
 
 
-    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
-    public String getSignIn(Model model) {
-        return "signUp";
+
+
+    @GetMapping("/signIn")
+    public String getSignInPage() {
+        return "login";
     }
 
 
-    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public ModelAndView signIn(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        if (usersService.containsUser(email, password)) {
-            session.setAttribute("email", email);
-            return new ModelAndView("redirect:/users");
-        } else {
-            return new ModelAndView("signUp");
-        }
+
+//    @PostMapping(value = "/signIn")
+//    public ModelAndView signIn(HttpServletRequest request, HttpServletResponse response) {
+//        HttpSession session = request.getSession();
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//        if (usersService.containsUser(email, password)) {
+//            session.setAttribute("email", email);
+//            return new ModelAndView("redirect:/users");
+//        } else {
+//            return new ModelAndView("login");
+//        }
+//    }
+
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/users")
+    public String getUsersPage(Model model) {
+        model.addAttribute("usersList", usersService.getAllUsers());
+        return "users_page";
     }
 
 

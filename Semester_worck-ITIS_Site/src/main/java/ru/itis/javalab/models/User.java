@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Data
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "account")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +24,34 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private String status;
     private String confirmCode;
+    private String patronic;
+
+    private static final long serialVersionUID = 7880619528188746225L;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role = Role.USER;
+
+    public enum State {
+        ACTIVE, BANNED
+    }
+
+    public enum Role {
+        USER, ADMIN
+    }
+
+    public boolean isActive() {
+        return this.state == State.ACTIVE;
+    }
+
+    public boolean isBanned() {
+        return this.state == State.BANNED;
+    }
+
+    public boolean isAdmin() {
+        return this.role == Role.ADMIN;
+    }
 }

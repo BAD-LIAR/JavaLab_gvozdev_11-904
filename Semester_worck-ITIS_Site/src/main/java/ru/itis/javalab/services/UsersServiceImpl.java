@@ -3,15 +3,17 @@ package ru.itis.javalab.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.javalab.dto.UserDto;
 import ru.itis.javalab.dto.UserForm;
 import ru.itis.javalab.models.User;
-import ru.itis.javalab.repositories.old.UsersRepository;
+import ru.itis.javalab.repositories.UsersRepository;
 import ru.itis.javalab.util.EmailUtil;
 import ru.itis.javalab.util.MailsGenerator;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static ru.itis.javalab.dto.UserDto.from;
@@ -39,6 +41,9 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private EmailUtil emailUtil;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Value("${server.url}")
     private String serverUrl;
 
@@ -57,9 +62,11 @@ public class UsersServiceImpl implements UsersService {
         User newUser = User.builder()
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
-                .password(userDto.getPassword())
+                .password(passwordEncoder.encode(userDto.getPassword()))
                 .email(userDto.getEmail())
                 .confirmCode(UUID.randomUUID().toString())
+                .role(User.Role.USER)
+                .state(User.State.ACTIVE)
                 .build();
         usersRepository.save(newUser);
 
@@ -75,7 +82,12 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public boolean containsUser(String email, String password) {
-        return usersRepository.containsUser(email, password);
+        return !usersRepository.findByEmailAndPassword(email, password).isEmpty();
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email){
+        return usersRepository.findByEmail(email);
     }
 
 

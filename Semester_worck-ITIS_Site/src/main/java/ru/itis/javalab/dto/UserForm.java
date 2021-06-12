@@ -1,6 +1,7 @@
 package ru.itis.javalab.dto;
 
 import lombok.Data;
+import ru.itis.javalab.models.User;
 import ru.itis.javalab.validation.ValidNames;
 import ru.itis.javalab.validation.ValidPassword;
 
@@ -36,4 +37,6 @@ public class UserForm {
 
     @NotEmpty(message = "{errors.invalid.empty}")
     private String lastName;
+
+    private User.Role role = User.Role.USER;
 }
